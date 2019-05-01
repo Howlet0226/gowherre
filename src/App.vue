@@ -11,4 +11,11 @@ export default {
 </script>
 
 <style>
+.swiper-pagination-bullet-active{
+    background: #fff;
+}
+.icons .swiper-container{
+  height: 0;
+  padding-bottom: 50%
+}
 </style>
