@@ -6,7 +6,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
@@ -15,7 +15,8 @@
         <div class="button-list">
           <div class="button-wrapper"
                v-for="item in hot"
-               :key="item.id">
+               :key="item.id"
+               @click="handleclick(item.name)">
             <div class="button">{{item.name}}</div>
           </div>
         </div>
@@ -27,7 +28,8 @@
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list"
              v-for="_item of item"
-             :key='_item.id'>
+             :key='_item.id'
+             @click='handleclick(_item.name)'>
           <div class="item border-bottom">{{_item.name}}</div>
 
         </div>
@@ -44,6 +46,14 @@ export default {
     cities: Object,
     hot: Array,
     letter: String
+  },
+  methods: {
+    handleclick (city) {
+      this.$store.dispatch('changeCity', city)
+      // js中有a标签和location来跳转页面，vue除了router-link,
+      // 还有使用js代码来进行跳转的this.$router.push('/')
+      this.$router.push('/')
+    }
   },
   mounted () {
     // 使用这个插件，把获取到的标签作为参数传进去即可

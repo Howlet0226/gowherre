@@ -12,7 +12,8 @@
       <ul>
         <li class="search-item border-bottom"
             v-for="item of list"
-            :key="item.id">
+            :key="item.id"
+            @click='handleclick(item.name)'>
           {{item.name}}
         </li>
         <li class="search-item border-bottom"
@@ -43,8 +44,18 @@ export default {
       return !this.list.length
     }
   },
+  methods: {
+    handleclick (city) {
+      this.$store.dispatch('changeCity', city)
+      // js中有a标签和location来跳转页面，vue除了router-link,
+      // 还有使用js代码来进行跳转的this.$router.push('/')
+      this.$router.push('/')
+    }
+  },
   watch: {
+    // 监事双向数据绑定的值，来改变搜索出来的内容
     keyword () {
+      // 节流的处理
       if (this.timer) {
         clearTimeout(this.timer)
       }
@@ -56,11 +67,14 @@ export default {
         const result = []
         for (let i in this.cities) {
           this.cities[i].forEach((value) => {
+            //   用indexof来判断里面是否有
             if (value.spell.indexOf(this.keyword) > -1 || value.name.indexOf(this.keyword) > -1) {
+              // 有的放进result里面
               result.push(value)
             }
           })
         }
+        // 把result返回给list数组去渲染
         this.list = result
       }, 100)
     }
