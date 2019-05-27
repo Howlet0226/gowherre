@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     handleclick (city) {
-      this.$store.dispatch('changeCity', city)
+      this.$store.commit('changeCity', city)
       // js中有a标签和location来跳转页面，vue除了router-link,
       // 还有使用js代码来进行跳转的this.$router.push('/')
       this.$router.push('/')

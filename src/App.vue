@@ -1,6 +1,8 @@
 <template>
   <div>
-    <router-view/>
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
@@ -11,11 +13,11 @@ export default {
 </script>
 
 <style>
-.swiper-pagination-bullet-active{
-    background: #fff;
+.swiper-pagination-bullet-active {
+  background: #fff;
 }
-.icons .swiper-container{
+.icons .swiper-container {
   height: 0;
-  padding-bottom: 50%
+  padding-bottom: 50%;
 }
 </style>
