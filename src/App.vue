@@ -16,6 +16,9 @@ export default {
 .swiper-pagination-bullet-active {
   background: #fff;
 }
+.swiper-container {
+  overflow: inherit;
+}
 .icons .swiper-container {
   height: 0;
   padding-bottom: 50%;
