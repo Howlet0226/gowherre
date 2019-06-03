@@ -36,8 +36,9 @@ export default {
   },
   // 为什么使用updated？因为刚开始cities的数据是空，vue会执行完mounted，
   // 当我们ajax获取到数据的时候，页面会重新渲染，会执行updated，所以使用这个才有用
-  updated () {
+  mounted () {
     // 在这个组件被重新渲染好以后，获取到字母列表中字母A上方距离list组件最上方的距离
+    //这里的this.$refs['A'][0]和document.getElementsByxxx('xx')[0]效果是一样的
     this.startY = this.$refs['A'][0].offsetTop
   },
   methods: {

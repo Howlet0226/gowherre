@@ -63,8 +63,8 @@ export default {
     letter () {
       if (this.letter) {
         // console.log(this.$refs[this.letter]);
-        // 由于这里的ref是通过循环生成的，里面的refs对应的不是标签本身，而是一个类数组
-        // 类数组的第一个为标签本身
+        //由于在这个组件绑定的ref的值和alphabet里面绑定的值是一样的，所以利用emit事件传过来的值以后
+        // 在这里直接获取，然后直接滚动过去
         const element = this.$refs[this.letter][0]
         // 利用betterscroll插件提供的scrollToElement方法，来实现我们的跳转
         this.scroll.scrollToElement(element)

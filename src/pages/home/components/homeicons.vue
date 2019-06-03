@@ -1,10 +1,14 @@
 <template>
   <div class="icons">
     <swiper :options="swiperOption">
-      <swiper-slide v-for="(page, index) of pages" :key="index">
-        <div class="icon" v-for="item of page" :key="item.id">
+      <swiper-slide v-for="(page, index) of pages"
+                    :key="index">
+        <div class="icon"
+             v-for="item of page"
+             :key="item.id">
           <div class="icon-img">
-            <img class="icon-img-content" :src="item.imgUrl">
+            <img class="icon-img-content"
+                 :src="item.imgUrl">
           </div>
           <p class="icon-desc">{{item.desc}}</p>
         </div>
@@ -15,11 +19,11 @@
 
 <script>
 export default {
-  name:'indexIcon',
-  props:{
-    list:Array
+  name: 'indexIcon',
+  props: {
+    list: Array
   },
-  data() {
+  data () {
     return {
       swiperOption: {
         autoplay: false
@@ -27,11 +31,11 @@ export default {
     };
   },
   computed: {
-    pages() {
+    pages () {
       const pages = [];
       this.list.forEach((item, index) => {
         //   由于索引是从0开始的，所以floor（index/8）的值就是前八个index的值都为0,在第一页
-        // 第九个的索引为8.除以把为1,在floor后的值为1,在第二页
+        // 第九个的索引为8.除以8为1,在floor后的值为1,在第二页
         const page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];
